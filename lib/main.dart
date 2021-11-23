@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foodies/data/providers/remote/api_food.dart';
 import 'package:foodies/pages/screen_categories.dart';
 
 void main() {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: ScreenCategories(),
+      home: ApiFood(),
     );
   }
 }

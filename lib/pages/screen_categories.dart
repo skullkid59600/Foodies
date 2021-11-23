@@ -3,7 +3,7 @@ import 'package:flutter/widgets.dart';
 
 class ScreenCategories extends StatelessWidget {
   const ScreenCategories({Key? key, this.categories}) : super(key: key);
-  final categories;
+  final  categories;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class ScreenCategories extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: true,
-        title: Text("Books"),
+        title: Text(""),
         actions: <Widget>[
           TextButton(
             style: style,
@@ -40,10 +40,6 @@ class ScreenCategories extends StatelessWidget {
       ),
       body: Container(
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: NetworkImage(categories.image ?? "vide"),
-            fit: BoxFit.fitWidth,
-          ),
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(

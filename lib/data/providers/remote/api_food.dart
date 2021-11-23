@@ -16,10 +16,10 @@ class ApiFood extends StatefulWidget {
 
 class _ApiFoodState extends State<ApiFood> {
   List<Categories> listCategories = [];
-  String _response = ' ';
+  String _response = 'test';
 
   Future<void> getAllCategories() async {
-    var uri = Uri.parse("www.themealdb.com/api/json/v1/1/categories.php");
+    var uri = Uri.parse("https://www.themealdb.com/api/json/v1/1/categories.php");
     var responseFromApi = await http.get(uri);
 
     if (responseFromApi.statusCode == 200) {

@@ -1,10 +1,12 @@
+// fichier dart pour la liste des catégories (noms)
+
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodies/data/models/food_categories.dart';
 import 'package:foodies/data/providers/remote/all_categories_response.dart';
-import 'package:foodies/pages/screen_categories.dart';
+import 'package:foodies/pages/AllRecipesByCategories_screen.dart';
 import 'package:http/http.dart' as http;
 
 class ApiFood extends StatefulWidget {
@@ -27,7 +29,6 @@ class _ApiFoodState extends State<ApiFood> {
           All_categories_reponse.fromJson(jsonDecode(responseFromApi.body));
       listCategories = allCategories.categories ?? [];
     }
-    debugPrint(responseFromApi.body);
     setState(() {
       _response = responseFromApi.body;
     });
@@ -48,7 +49,7 @@ class _ApiFoodState extends State<ApiFood> {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
-                        ScreenCategories(categories: listCategories[index])));
+                        AllRecipesByCategories(categories: listCategories[index])));
               },
             );
           },
@@ -57,7 +58,7 @@ class _ApiFoodState extends State<ApiFood> {
           TextButton(
             style: style,
             onPressed: getAllCategories,
-            child: const Text('GETTER'),
+            child: const Text('test'),
           ),
         ]));
   }

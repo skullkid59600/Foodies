@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodies/data/providers/remote/api_food.dart';
-import 'package:foodies/pages/screen_categories.dart';
+import 'package:foodies/pages/categories_screen.dart';
+import 'package:foodies/pages/AllRecipesByCategories_screen.dart';
 
 void main() {
   runApp(const MyApp());

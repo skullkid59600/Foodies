@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:foodies/pages/categories_screen.dart';
-import 'package:foodies/pages/AllRecipesByCategories_screen.dart';
+import 'package:foodies/pages/recipes/categories_screen.dart';
+import 'package:foodies/pages/recipes/AllRecipesByCategories_screen.dart';
 
 void main() {
   runApp(const MyApp());

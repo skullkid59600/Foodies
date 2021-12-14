@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodies/data/models/food_categories.dart';
 import 'package:foodies/data/providers/remote/all_categories_response.dart';
-import 'package:foodies/pages/AllRecipesByCategories_screen.dart';
+import 'package:foodies/pages/recipes/AllRecipesByCategories_screen.dart';
 import 'package:http/http.dart' as http;
 
 class ApiFood extends StatefulWidget {

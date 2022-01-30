@@ -9,6 +9,8 @@ import 'package:foodies/pages/recipes/categories_screen.dart';
 import 'package:foodies/pages/recipes/random_meal_screen.dart';
 import 'package:http/http.dart' as http;
 
+import 'index.dart';
+
 class MealByAreaScreen extends StatefulWidget {
   const MealByAreaScreen({Key? key}) : super(key: key);
 
@@ -55,6 +57,16 @@ class _MealByAreaScreenState extends State<MealByAreaScreen> {
                   });
             }),
         appBar: AppBar(actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.home),
+            tooltip: 'home',
+            onPressed: () {
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Index()));
+              });
+            },
+          ),
           TextButton(
             style: style,
             onPressed: getAllAreas,

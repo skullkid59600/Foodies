@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class AllRecipesByCategories extends StatelessWidget {
-  const AllRecipesByCategories({Key? key, this.categories}) : super(key: key);
+  const AllRecipesByCategories({Key? key, this.categories,this.mealId}) : super(key: key);
   final  categories;
+  final  mealId;
 
   @override
   Widget build(BuildContext context) {

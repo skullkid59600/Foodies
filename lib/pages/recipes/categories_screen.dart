@@ -6,6 +6,7 @@ import 'package:foodies/data/models/food_categories.dart';
 import 'package:foodies/data/providers/remote/all_categories_response.dart';
 import 'package:foodies/pages/recipes/AllRecipesByCategories_screen.dart';
 import 'package:foodies/pages/recipes/area_screen.dart';
+import 'package:foodies/pages/recipes/index.dart';
 import 'package:foodies/pages/recipes/random_meal_screen.dart';
 import 'package:http/http.dart' as http;
 
@@ -19,6 +20,7 @@ class ApiFood extends StatefulWidget {
 class _ApiFoodState extends State<ApiFood> {
   List<Categories> listCategories = [];
   String _response = 'test';
+  String _text = 'ceci est un text';
 
   Future<void> getAllCategories() async {
     var uri =
@@ -46,7 +48,7 @@ class _ApiFoodState extends State<ApiFood> {
           itemCount: listCategories.length,
           itemBuilder: (context, index) {
             return ListTile(
-              title: Text(listCategories[index].strCategory ?? "vide"),
+              title: Text(listCategories[index].strCategory ?? "test"),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) => AllRecipesByCategories(
@@ -56,6 +58,16 @@ class _ApiFoodState extends State<ApiFood> {
           },
         ),
         appBar: AppBar(actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.home),
+            tooltip: 'home',
+            onPressed: () {
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => Index()));
+              });
+            },
+          ),
           TextButton(
             style: style,
             onPressed: getAllCategories,

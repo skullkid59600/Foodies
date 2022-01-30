@@ -6,6 +6,9 @@ import 'package:http/http.dart' as http;
 import 'package:foodies/data/models/food_byname.dart';
 
 import 'AllRecipesByCategories_screen.dart';
+import 'area_screen.dart';
+import 'categories_screen.dart';
+import 'index.dart';
 
 class RandomMealScreen extends StatefulWidget {
   const RandomMealScreen({Key? key}) : super(key: key);
@@ -33,9 +36,48 @@ class _RandomMealScreenState extends State<RandomMealScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(
-        title: Text("Random meal"),
-      ),
+      appBar: AppBar(actions: <Widget>[
+        IconButton(
+          icon: const Icon(Icons.home),
+          tooltip: 'home',
+          onPressed: () {
+            setState(() {
+              Navigator.of(context)
+                  .push(MaterialPageRoute(builder: (context) => Index()));
+            });
+          },
+        ),
+        TextButton(
+            style: TextButton.styleFrom(
+                primary: Theme.of(context).colorScheme.onPrimary),
+            child: const Text('Les catégories'),
+            onPressed: () {
+              setState(() {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => ApiFood()));
+              });
+            }),
+        TextButton(
+            style: TextButton.styleFrom(
+                primary: Theme.of(context).colorScheme.onPrimary),
+            child: const Text('Areas'),
+            onPressed: () {
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => MealByAreaScreen()));
+              });
+            }),
+        TextButton(
+            style: TextButton.styleFrom(
+                primary: Theme.of(context).colorScheme.onPrimary),
+            child: const Text('Random meal'),
+            onPressed: () {
+              setState(() {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => RandomMealScreen()));
+              });
+            }),
+      ]),
       body: Column(children: [
         ElevatedButton(
             onPressed: () async {

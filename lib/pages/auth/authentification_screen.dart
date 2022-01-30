@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foodies/pages/auth/create_account_screen.dart';
 import 'package:foodies/pages/recipes/categories_screen.dart';
+import 'package:foodies/pages/recipes/index.dart';
 
 class AuthentificationScreen extends StatefulWidget {
   const AuthentificationScreen({Key? key}) : super(key: key);
@@ -45,7 +46,7 @@ class _AuthentificationScreenState extends State<AuthentificationScreen> {
             );
             setState(() {
               print(test.user?.email);
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ApiFood()));
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => Index()));
             });
           }, child: Text('Connexion')),
           ElevatedButton(onPressed: () async {

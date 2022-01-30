@@ -3,8 +3,9 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodies/data/models/food_areas.dart';
-import 'package:foodies/data/providers/remote/all_areas.dart';
+import 'package:foodies/data/providers/remote/all_areas_response.dart';
 import 'package:foodies/pages/recipes/all_recipes_by_area_screen.dart';
+import 'package:foodies/pages/recipes/categories_screen.dart';
 import 'package:foodies/pages/recipes/random_meal_screen.dart';
 import 'package:http/http.dart' as http;
 
@@ -17,6 +18,7 @@ class MealByAreaScreen extends StatefulWidget {
 
 class _MealByAreaScreenState extends State<MealByAreaScreen> {
   List<FoodAreas> listFoodArea = [];
+  String _response = 'test';
 
   Future<void> getAllAreas() async {
     var uri =
@@ -24,16 +26,14 @@ class _MealByAreaScreenState extends State<MealByAreaScreen> {
     var responseFromApi = await http.get(uri);
 
     if (responseFromApi.statusCode == 200) {
-      All_foodarea_reponse allFoodArea =
-          All_foodarea_reponse.fromJson(jsonDecode(responseFromApi.body));
+      AllFoodAreaResponse allFoodArea =
+      AllFoodAreaResponse.fromJson(jsonDecode(responseFromApi.body));
       listFoodArea = allFoodArea.foodAreas ?? [];
     }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    getAllAreas();
+    setState(() {
+      _response = responseFromApi.body;
+      print(listFoodArea);
+    });
   }
 
   @override
@@ -55,6 +55,20 @@ class _MealByAreaScreenState extends State<MealByAreaScreen> {
                   });
             }),
         appBar: AppBar(actions: <Widget>[
+          TextButton(
+            style: style,
+            onPressed: getAllAreas,
+            child: const Text('Rafraichir'),
+          ),
+          TextButton(
+              style: style,
+              child: const Text('Les catégories'),
+              onPressed: () {
+                setState(() {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => ApiFood()));
+                });
+              }),
           TextButton(
               style: style,
               child: const Text('Areas'),

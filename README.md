@@ -1,2 +1,2 @@
 # Foodies
-An app 4 foodies
+Une application qui répertorie quelques recettes, et qui peut les filtrer par catégories, areas, ou même une recette random ...

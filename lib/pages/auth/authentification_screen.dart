@@ -1,15 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:foodies/pages/auth/create_account_screen.dart';
+import 'package:foodies/pages/recipes/categories_screen.dart';
 
-class AuthScreen extends StatefulWidget {
-  const AuthScreen({Key? key}) : super(key: key);
+class AuthentificationScreen extends StatefulWidget {
+  const AuthentificationScreen({Key? key}) : super(key: key);
 
   @override
-  _AuthScreenState createState() => _AuthScreenState();
+  _AuthentificationScreenState createState() => _AuthentificationScreenState();
 }
 
-class _AuthScreenState extends State<AuthScreen> {
+class _AuthentificationScreenState extends State<AuthentificationScreen> {
   GlobalKey<FormState> _key = GlobalKey();
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
@@ -17,7 +19,7 @@ class _AuthScreenState extends State<AuthScreen> {
   @override
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
-      title: Text("Titre"),
+      title: Text("Connexion"),
     ),
     body: Form(
       key: _key,
@@ -26,33 +28,31 @@ class _AuthScreenState extends State<AuthScreen> {
           TextFormField(
             controller: _emailController,
             validator: (value) {
-              if (value != null && value.isEmpty) {
-                return 'ERREUR';
+              if(value != null && value.isEmpty) {
+                return "ERREUR";
               }
               return null;
             },
           ),
           TextFormField(
             controller: _passwordController,
+            obscureText: true,
           ),
           ElevatedButton(onPressed: () async {
-            /*FirebaseAuth.instance.createUserWithEmailAndPassword(
-                    email: _emailController.text,
-                    password: _passwordController.text
-                ).then((value) {
-                  setState(() {
-
-                  });
-                });*/
-            var test = await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            var test = await FirebaseAuth.instance.signInWithEmailAndPassword(
                 email: _emailController.text,
                 password: _passwordController.text
             );
             setState(() {
               print(test.user?.email);
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => ApiFood()));
             });
-
-          }, child: Text('Valider'))
+          }, child: Text('Connexion')),
+          ElevatedButton(onPressed: () async {
+            setState(() {
+              Navigator.of(context).push(MaterialPageRoute(builder: (context) => CreateAccountScreen()));
+            });
+          }, child: Text('Création  de  compte'))
         ],
       ),
     ),

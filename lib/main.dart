@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:foodies/pages/recipes/categories_screen.dart';
-import 'package:foodies/pages/recipes/AllRecipesByCategories_screen.dart';
+import 'package:foodies/pages/auth/authentification_screen.dart';
+import 'package:foodies/pages/auth/create_account_screen.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: const FirebaseOptions(
+      apiKey: "AIzaSyAZSJC42-ONdAGQOQazbO-Yoob7vWVP89M",
+      appId: "1:191347492240:android:0ab8ed8d5e3ddbb365df15",
+      messagingSenderId: "XXX",
+      projectId: "foodies-ac454",
+    ),
+  );
   runApp(const MyApp());
 }
 
@@ -26,7 +36,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: ApiFood(),
+      home: AuthentificationScreen(),
     );
   }
 }

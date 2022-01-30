@@ -4,7 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodies/data/models/food_categories.dart';
 import 'package:foodies/data/providers/remote/all_categories_response.dart';
-import 'package:foodies/pages/recipes/AllRecipesByCategories_screen.dart';
+import 'package:foodies/pages/recipes/all_recipes_by_categories_screen.dart';
 import 'package:foodies/pages/recipes/area_screen.dart';
 import 'package:foodies/pages/index/index.dart';
 import 'package:foodies/pages/recipes/random_meal_screen.dart';
@@ -51,8 +51,8 @@ class _ApiFoodState extends State<ApiFood> {
               title: Text(listCategories[index].strCategory ?? "test"),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => AllRecipesByCategories(
-                        categories: listCategories[index])));
+                    builder: (context) =>
+                        AllRecipesByCategories(mealCategory : listCategories[index].strCategory)));
               },
             );
           },

@@ -1,5 +1,3 @@
-// fichier dart pour la liste des catégories (noms)
-
 import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
@@ -40,12 +38,12 @@ class _ApiFoodState extends State<ApiFood> {
 
   Future<void> getAllAreas() async {
     var uri =
-    Uri.parse("https://www.themealdb.com/api/json/v1/1/list.php?a=list");
+        Uri.parse("https://www.themealdb.com/api/json/v1/1/list.php?a=list");
     var responseFromApi = await http.get(uri);
 
     if (responseFromApi.statusCode == 200) {
       All_foodarea_reponse allFoodArea =
-      All_foodarea_reponse.fromJson(jsonDecode(responseFromApi.body));
+          All_foodarea_reponse.fromJson(jsonDecode(responseFromApi.body));
       listFoodarea = allFoodArea.foodarea ?? [];
     }
     setState(() {

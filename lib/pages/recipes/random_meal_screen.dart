@@ -5,6 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:foodies/data/models/food_byname.dart';
 
+import 'AllRecipesByCategories_screen.dart';
+
 class RandomMealScreen extends StatefulWidget {
   const RandomMealScreen({Key? key}) : super(key: key);
 
@@ -48,39 +50,44 @@ class _RandomMealScreenState extends State<RandomMealScreen> {
               itemCount: listFood.length,
               itemBuilder: (context, index) {
                 final item = listFood[index];
-                return MeatItem(item,context);
+                return MeatItem(item, context);
               },
             ))
       ]));
 
-  Widget MeatItem(Meals meals,BuildContext context) {
+  Widget MeatItem(Meals meals, BuildContext context) {
     return GestureDetector(
         //TODO METTRE LE BON ROUTE ET PASSER L'ID
-        onTap: () => {},
+        onTap: () => {
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) =>
+                      AllRecipesByCategories(mealId: meals.idMeal)))
+            },
         child: Card(
             child: Row(
-      children: [
-        Image.network(
-          meals.strMealThumb ?? "",
-          width: 100,
-          height: 100,
-        ),
-        const SizedBox(width: 20),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            FittedBox(
-              child: Text(meals.strMeal ?? "",
-                  textAlign: TextAlign.start,
-                  style: const TextStyle(color: Colors.black54, fontSize: 20)),
+            Image.network(
+              meals.strMealThumb ?? "",
+              width: 100,
+              height: 100,
             ),
-            const SizedBox(height: 15),
-            Text(meals.strCategory ?? "",
-                textAlign: TextAlign.start,
-                style: const TextStyle(color: Colors.green, fontSize: 15))
+            const SizedBox(width: 20),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                FittedBox(
+                  child: Text(meals.strMeal ?? "",
+                      textAlign: TextAlign.start,
+                      style:
+                          const TextStyle(color: Colors.black54, fontSize: 20)),
+                ),
+                const SizedBox(height: 15),
+                Text(meals.strCategory ?? "",
+                    textAlign: TextAlign.start,
+                    style: const TextStyle(color: Colors.green, fontSize: 15))
+              ],
+            )
           ],
-        )
-      ],
-    )));
+        )));
   }
 }

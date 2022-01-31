@@ -20,6 +20,12 @@ class MealByAreaScreen extends StatefulWidget {
 
 class _MealByAreaScreenState extends State<MealByAreaScreen> {
   List<FoodAreas> listFoodArea = [];
+
+  @override
+  void initState () {
+    super.initState();
+    getAllAreas();
+  }
   String _response = 'test';
 
   Future<void> getAllAreas() async {
@@ -28,8 +34,7 @@ class _MealByAreaScreenState extends State<MealByAreaScreen> {
     var responseFromApi = await http.get(uri);
 
     if (responseFromApi.statusCode == 200) {
-      AllFoodAreaResponse allFoodArea =
-      AllFoodAreaResponse.fromJson(jsonDecode(responseFromApi.body));
+      AllFoodAreaResponse allFoodArea = AllFoodAreaResponse.fromJson(jsonDecode(responseFromApi.body));
       listFoodArea = allFoodArea.foodAreas ?? [];
     }
     setState(() {

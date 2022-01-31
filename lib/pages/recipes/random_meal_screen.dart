@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodies/data/providers/remote/all_meals_reponse.dart';
 import 'package:http/http.dart' as http;
@@ -41,7 +42,9 @@ class _RandomMealScreenState extends State<RandomMealScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(actions: <Widget>[
+      appBar: AppBar(
+          backgroundColor: CupertinoColors.systemYellow,
+          actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.home),
           tooltip: 'home',

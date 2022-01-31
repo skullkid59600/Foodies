@@ -93,7 +93,9 @@ class _AllRecipesByCategoriesState extends State<AllRecipesByCategories> {
             );
           },
         ),
-        appBar: AppBar(actions: <Widget>[
+        appBar: AppBar(
+            backgroundColor: CupertinoColors.systemYellow,
+            actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.home),
             tooltip: 'home',

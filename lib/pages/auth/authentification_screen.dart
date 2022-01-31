@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foodies/pages/auth/create_account_screen.dart';
@@ -20,6 +21,7 @@ class _AuthentificationScreenState extends State<AuthentificationScreen> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text("Connexion"),
+          backgroundColor: CupertinoColors.systemYellow,
         ),
         body: Form(
           key: _key,

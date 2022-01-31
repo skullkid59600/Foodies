@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foodies/data/models/food_byname.dart';
@@ -48,7 +49,9 @@ class _MealByNameState extends State<MealByName> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-      appBar: AppBar(actions: <Widget>[
+      appBar: AppBar(
+          backgroundColor: CupertinoColors.systemYellow,
+          actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.home),
           tooltip: 'home',

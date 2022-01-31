@@ -57,8 +57,8 @@ class _MealByAreaScreenState extends State<MealByAreaScreen> {
                   title: Text(listFoodArea[index].strArea ?? "vide"),
                   onTap: () {
                     Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => AllRecipesByAreaScreen(
-                            areas: listFoodArea[index])));
+                        builder: (context) => AllRecipesByArea(
+                            areas: listFoodArea[index].strArea)));
                   });
             }),
         appBar: AppBar(actions: <Widget>[

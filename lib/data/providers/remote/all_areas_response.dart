@@ -2,7 +2,7 @@ import 'package:foodies/data/models/food_areas.dart';
 
 /// meals : [{"strArea":"American"},{"strArea":"British"},{"strArea":"Canadian"},{"strArea":"Chinese"},{"strArea":"Croatian"},{"strArea":"Dutch"},{"strArea":"Egyptian"},{"strArea":"French"},{"strArea":"Greek"},{"strArea":"Indian"},{"strArea":"Irish"},{"strArea":"Italian"},{"strArea":"Jamaican"},{"strArea":"Japanese"},{"strArea":"Kenyan"},{"strArea":"Malaysian"},{"strArea":"Mexican"},{"strArea":"Moroccan"},{"strArea":"Polish"},{"strArea":"Portuguese"},{"strArea":"Russian"},{"strArea":"Spanish"},{"strArea":"Thai"},{"strArea":"Tunisian"},{"strArea":"Turkish"},{"strArea":"Unknown"},{"strArea":"Vietnamese"}]
 
-class AllFoodAreaResponse {
+class All_areas_response {
   List<FoodAreas>? _foodAreas;
 
   List<FoodAreas>? get foodAreas => _foodAreas;
@@ -12,7 +12,7 @@ class AllFoodAreaResponse {
     _foodAreas = foodAreas;
   }
 
-  AllFoodAreaResponse.fromJson(dynamic json) {
+  All_areas_response.fromJson(dynamic json) {
     if (json['foodAreas'] != null) {
       _foodAreas = [];
       json['foodAreas'].forEach((v) {

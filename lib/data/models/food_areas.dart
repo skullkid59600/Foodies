@@ -6,7 +6,6 @@ class FoodAreas {
   String? get strArea => _strArea;
 
   FoodAreas({String? strArea}) {
-     String? strArea;
     _strArea = strArea;
   }
 

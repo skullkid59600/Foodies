@@ -34,7 +34,7 @@ class _MealByAreaScreenState extends State<MealByAreaScreen> {
     var responseFromApi = await http.get(uri);
 
     if (responseFromApi.statusCode == 200) {
-      AllFoodAreaResponse allFoodArea = AllFoodAreaResponse.fromJson(jsonDecode(responseFromApi.body));
+      All_areas_response allFoodArea = All_areas_response.fromJson(jsonDecode(responseFromApi.body));
       listFoodArea = allFoodArea.foodAreas ?? [];
     }
     setState(() {

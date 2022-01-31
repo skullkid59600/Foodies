@@ -63,9 +63,9 @@ class _AllRecipesByCategoriesState extends State<AllRecipesByCategories> {
               title: Row(
             children: [
               Container(
-                margin: EdgeInsets.all(20),
-                width: 70,
-                height: 70,
+                margin: EdgeInsets.all(10),
+                width: 60,
+                height: 60,
                 decoration: BoxDecoration(
                 shape: BoxShape.circle,
                   image: DecorationImage(
@@ -74,7 +74,7 @@ class _AllRecipesByCategoriesState extends State<AllRecipesByCategories> {
                 ),
               ),
               ),
-            SizedBox(width: 20,),
+            SizedBox(width: 15,),
             Flexible(
               flex: 2,
               child: Column(

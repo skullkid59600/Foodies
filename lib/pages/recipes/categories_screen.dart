@@ -4,9 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodies/data/models/food_categories.dart';
 import 'package:foodies/data/providers/remote/all_categories_response.dart';
+import 'package:foodies/pages/index/index.dart';
 import 'package:foodies/pages/recipes/all_recipes_by_categories_screen.dart';
 import 'package:foodies/pages/recipes/area_screen.dart';
-import 'package:foodies/pages/index/index.dart';
 import 'package:foodies/pages/recipes/random_meal_screen.dart';
 import 'package:http/http.dart' as http;
 
@@ -37,6 +37,11 @@ class _ApiFoodState extends State<ApiFood> {
     });
   }
 
+  void initState() {
+    super.initState();
+    getAllCategories();
+  }
+
   @override
   Widget build(BuildContext context) {
     final ButtonStyle style =
@@ -51,8 +56,8 @@ class _ApiFoodState extends State<ApiFood> {
               title: Text(listCategories[index].strCategory ?? "test"),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>
-                        AllRecipesByCategories(strCategory : listCategories[index].strCategory)));
+                    builder: (context) => AllRecipesByCategories(
+                        strCategory: listCategories[index].strCategory)));
               },
             );
           },
@@ -63,36 +68,38 @@ class _ApiFoodState extends State<ApiFood> {
             tooltip: 'home',
             onPressed: () {
               setState(() {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Index()));
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => Index()));
               });
             },
           ),
           TextButton(
-            style: style,
-            onPressed: getAllCategories,
-            child: const Text('Les catégories'),
-          ),
+              style: style,
+              child: const Text('Les catégories'),
+              onPressed: () {
+                setState(() {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => ApiFood()));
+                });
+              }),
           TextButton(
-            style: style,
+              style: style,
               child: const Text('Areas'),
-            onPressed:() {
-              setState(() {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => MealByAreaScreen()));
-              });
-            }
-          ),
+              onPressed: () {
+                setState(() {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => MealByAreaScreen()));
+                });
+              }),
           TextButton(
-            style: style,
+              style: style,
               child: const Text('Random meal'),
-            onPressed: () {
-              setState(() {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => RandomMealScreen()));
-              });
-            }
-          ),
+              onPressed: () {
+                setState(() {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => RandomMealScreen()));
+                });
+              }),
         ]));
   }
 }

@@ -44,7 +44,7 @@ class _MealByNameState extends State<MealByName> {
   @override
   Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
-        title: Text("Random meal"),
+        title: Text("Votre plat : ${widget.strMeal}"),
       ),
       body: Column(children: [
         Expanded(

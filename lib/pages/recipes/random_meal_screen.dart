@@ -1,11 +1,14 @@
 import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:foodies/data/providers/remote/all_meals_reponse.dart';
 import 'package:http/http.dart' as http;
 import 'package:foodies/data/models/food_byname.dart';
-import 'AllRecipesByCategories_screen.dart';
+
 import 'area_screen.dart';
 import 'categories_screen.dart';
 import '../index/index.dart';
+import 'meal_by_name.dart';
 
 class RandomMealScreen extends StatefulWidget {
   const RandomMealScreen({Key? key}) : super(key: key);
@@ -23,12 +26,17 @@ class _RandomMealScreenState extends State<RandomMealScreen> {
     var responseFromApi = await http.get(uri);
 
     if (responseFromApi.statusCode == 200) {
-      Food foodByName = Food.fromJson(jsonDecode(responseFromApi.body));
-      listFood = foodByName.meals ?? [];
+      All_meals_response allMeals = All_meals_response.fromJson(jsonDecode(responseFromApi.body));
+      listFood = allMeals.meals ?? [];
     }
     setState(() {
       _response = responseFromApi.body;
     });
+  }
+
+  void initState() {
+    super.initState();
+    getRandomRecipe();
   }
 
   @override
@@ -96,11 +104,10 @@ class _RandomMealScreenState extends State<RandomMealScreen> {
 
   Widget MeatItem(Meals meals, BuildContext context) {
     return GestureDetector(
-        //TODO METTRE LE BON ROUTE ET PASSER L'ID
         onTap: () => {
               Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) =>
-                      AllRecipesByCategories(mealId: meals.idMeal)))
+                      MealByName(strMeal: meals.strMeal)))
             },
         child: Card(
             child: Row(

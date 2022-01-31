@@ -32,6 +32,7 @@ class _Index extends State<Index> {
         ]),
       ),
       appBar: AppBar(
+        automaticallyImplyLeading: false,
           backgroundColor: CupertinoColors.systemYellow,
           actions: <Widget>[
         Image.asset('assets/images/foodies.png'),

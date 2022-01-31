@@ -47,7 +47,7 @@ class _Index extends State<Index> {
             }),
         TextButton(
             style: TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary),
-            child: const Text('Areas'),
+            child: const Text('Régions'),
             onPressed: () {
               setState(() {
                 Navigator.of(context).push(MaterialPageRoute(
@@ -56,7 +56,7 @@ class _Index extends State<Index> {
             }),
         TextButton(
             style: TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary),
-            child: const Text('Random meal'),
+            child: const Text('Plat Aléatoire'),
             onPressed: () {
               setState(() {
                 Navigator.of(context).push(MaterialPageRoute(

@@ -68,11 +68,6 @@ class _MealByAreaScreenState extends State<MealByAreaScreen> {
             },
           ),
           TextButton(
-            style: style,
-            onPressed: getAllAreas,
-            child: const Text('Rafraichir'),
-          ),
-          TextButton(
               style: style,
               child: const Text('Les catégories'),
               onPressed: () {
@@ -83,7 +78,7 @@ class _MealByAreaScreenState extends State<MealByAreaScreen> {
               }),
           TextButton(
               style: style,
-              child: const Text('Areas'),
+              child: const Text('Régions'),
               onPressed: () {
                 setState(() {
                   Navigator.of(context).push(MaterialPageRoute(
@@ -92,7 +87,7 @@ class _MealByAreaScreenState extends State<MealByAreaScreen> {
               }),
           TextButton(
               style: style,
-              child: const Text('Random meal'),
+              child: const Text('Plat Aléatoire'),
               onPressed: () {
                 setState(() {
                   Navigator.of(context).push(MaterialPageRoute(

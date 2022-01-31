@@ -84,7 +84,7 @@ class _ApiFoodState extends State<ApiFood> {
               }),
           TextButton(
               style: style,
-              child: const Text('Areas'),
+              child: const Text('Régions'),
               onPressed: () {
                 setState(() {
                   Navigator.of(context).push(MaterialPageRoute(
@@ -93,7 +93,7 @@ class _ApiFoodState extends State<ApiFood> {
               }),
           TextButton(
               style: style,
-              child: const Text('Random meal'),
+              child: const Text('Plat Aléatoire'),
               onPressed: () {
                 setState(() {
                   Navigator.of(context).push(MaterialPageRoute(

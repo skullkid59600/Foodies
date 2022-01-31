@@ -103,44 +103,83 @@ class _MealByNameState extends State<MealByName> {
       ]));
 
   Widget MeatItem(Meals meals, BuildContext context) {
-    return GestureDetector(
-        onTap: () => {
-        },
-        child: Card(
-            child: Row(
-              children: [
-                Image.network(
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+          Stack(
+          children: [
+          Align(
+          alignment: Alignment.topCenter,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(24),
+                child: Image.network(
                   meals.strMealThumb ?? "",
-                  width: 100,
-                  height: 100,
+                  height: 250,
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                  //image: AssetImage(widget.recipeModel.imgPath),
                 ),
-                const SizedBox(width: 20),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+              ),
+            ),
+          ]
+          ),
+                const SizedBox(width: 40),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    FittedBox(
-                      child: Text(meals.strMeal ?? "",
-                          textAlign: TextAlign.start,
+                    Flexible(
+                      flex: 2,
+                      child: Column( children: [
+                        Text(meals.strMeal ?? "",
+                          textAlign: TextAlign.center,
                           style:
-                          const TextStyle(color: Colors.black54, fontSize: 20)),
-                    ),
-                    const SizedBox(height: 15),
-                    Text(meals.strCategory ?? "",
-                        textAlign: TextAlign.start,
-                        style: const TextStyle(color: Colors.green, fontSize: 15)),
-                    Text(meals.strArea ?? "",
-                        textAlign: TextAlign.start,
-                        style: const TextStyle(color: Colors.green, fontSize: 15)),
-                    Text(meals.strTags ?? "",
-                        textAlign: TextAlign.start,
-                        softWrap: true,
-                        style: const TextStyle(color: Colors.green, fontSize: 15)),
-                    Text(meals.strInstructions ?? "",
-                        textAlign: TextAlign.start,
-                        style: const TextStyle(color: Colors.green, fontSize: 15))
+                          const TextStyle(color: Colors.brown, fontSize: 20, fontWeight: FontWeight.bold)
+                        ),
+                        const SizedBox(height: 8,),
+                        const Text("Catégorie : ",
+                            textAlign: TextAlign.center,
+                            style:
+                            TextStyle(color: Colors.amber, fontSize: 20, fontWeight: FontWeight.bold)
+                        ),
+                        const SizedBox(height: 8,),
+                        Text(meals.strCategory?? "",
+                            textAlign: TextAlign.center,
+                            style:
+                            const TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.bold)
+                        ),
+                        const SizedBox(height: 8,),
+                        const Text("Région : ",
+                            textAlign: TextAlign.center,
+                            style:
+                            TextStyle(color: Colors.amber, fontSize: 20, fontWeight: FontWeight.bold)
+                        ),
+                        const SizedBox(height: 8,),
+                        Text(meals.strArea?? "",
+                            textAlign: TextAlign.center,
+                            style:
+                            const TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.bold)
+                        ),
+                        const SizedBox(height: 8,),
+                        const Text("Instructions : ",
+                            textAlign: TextAlign.center,
+                            style:
+                            TextStyle(color: Colors.amber, fontSize: 20, fontWeight: FontWeight.bold)
+                        ),
+                        const SizedBox(height: 8,),
+                        Text(meals.strInstructions?? "",
+                            textAlign: TextAlign.center,
+                            style:
+                            const TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.bold)
+                        ),
+                  ]
+                ),
+              ),
                   ],
                 )
+                )
               ],
-            )));
-  }}
-
+            );
+  }
+}

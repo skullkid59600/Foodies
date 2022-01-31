@@ -22,8 +22,14 @@ class _Index extends State<Index> {
   Widget build(BuildContext context) => Scaffold(
       body: Form(
         child: Column(children: [
-          Text(_response),
-          Image.network('https://www.themealdb.com/images/meal-icon.png'),
+          Text(_response,
+              textAlign: TextAlign.center,
+              style:
+              const TextStyle(color: Colors.brown, fontSize: 40, fontWeight: FontWeight.bold)),
+          Image.network('https://www.themealdb.com/images/meal-icon.png',
+            height: 200,
+            width: double.infinity,
+            fit: BoxFit.cover,),
         ]),
       ),
       appBar: AppBar(

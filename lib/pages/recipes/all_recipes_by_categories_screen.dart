@@ -11,8 +11,8 @@ import 'package:http/http.dart' as http;
 import 'meal_by_name.dart';
 
 class AllRecipesByCategories extends StatefulWidget {
-  const AllRecipesByCategories({Key? key,  this.mealCategory}) : super(key: key);
-  final  mealCategory;
+  const AllRecipesByCategories({Key? key,  this.strCategory}) : super(key: key);
+  final  strCategory;
 
 
   @override
@@ -22,12 +22,16 @@ class AllRecipesByCategories extends StatefulWidget {
 class _AllRecipesByCategoriesState extends State<AllRecipesByCategories> {
 
   List<Meals> listMeals = [];
-
+  @override
+  void initState () {
+    super.initState();
+    getRecipes();
+  }
   String _response = 'test';
 
 
   Future<void> getRecipes() async {
-    var uri = Uri.parse("www.themealdb.com/api/json/v1/1/filter.php?c=beef");
+    var uri = Uri.parse("https://www.themealdb.com/api/json/v1/1/filter.php?c=${widget.strCategory}");
     var responseFromApi = await http.get(uri);
 
     if (responseFromApi.statusCode == 200) {
@@ -50,21 +54,16 @@ class _AllRecipesByCategoriesState extends State<AllRecipesByCategories> {
           itemCount: listMeals.length,
           itemBuilder: (context, index) {
             return ListTile(
-              title: Text(listMeals[index].strCategory ?? "vide"),
+              title: Text(listMeals[index].strMeal ?? "vide"),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
-                        MealByName(mealName : listMeals[index].strMeal)));
+                        MealByName(strMeal : listMeals[index].strMeal)));
               },
             );
           },
         ),
         appBar: AppBar(title: Text("Recipes"), actions: <Widget>[
-          TextButton(
-            style: style,
-            onPressed: getRecipes,
-            child: const Text('test'),
-          ),
         ]));
   }}
 

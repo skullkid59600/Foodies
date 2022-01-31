@@ -3,31 +3,38 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foodies/data/models/food_byname.dart';
+import 'package:foodies/data/providers/remote/all_meals_reponse.dart';
 import 'package:http/http.dart' as http;
 
 class MealByName extends StatefulWidget {
-  const MealByName({Key? key,  this.mealName}) : super(key: key);
-  final  mealName;
+  const MealByName({Key? key,  this.strMeal}) : super(key: key);
+  final  strMeal;
 
 
   @override
   _MealByNameState createState() => _MealByNameState();
 }
 
+
 class _MealByNameState extends State<MealByName> {
 
-  Meals selectedMeal = Meals();
+  List<Meals> selectedMeal = [];
+  @override
+  void initState () {
+    super.initState();
+    getRecipeByName();
+  }
 
-  get mealCategory => selectedMeal.strCategory ;
   String _response = 'test';
 
 
-  void getRecipe() async {
-    var uri = Uri.parse("www.themealdb.com/api/json/v1/1/filter.php?c=Seafood");
+  Future<void> getRecipeByName() async {
+    var uri = Uri.parse("https://www.themealdb.com/api/json/v1/1/search.php?s=${widget.strMeal}");
     var responseFromApi = await http.get(uri);
 
     if (responseFromApi.statusCode == 200) {
-      selectedMeal = Meals.fromJson(jsonDecode(responseFromApi.body));
+      All_meals_response allMeals = All_meals_response.fromJson(jsonDecode(responseFromApi.body));
+      selectedMeal = allMeals.meals ?? [];
     }
     setState(() {
       _response = responseFromApi.body;
@@ -35,114 +42,51 @@ class _MealByNameState extends State<MealByName> {
   }
 
   @override
-  Widget build(BuildContext context) {
-    //final selectedMeal = Meals.firstWhere((item) => item.id.contains(categoryName));
-    return Scaffold(
+  Widget build(BuildContext context) => Scaffold(
       appBar: AppBar(
-        title: Text("Meal Detail"),
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        elevation: 0.0,
+        title: Text("Random meal"),
       ),
-      body: SingleChildScrollView(
-        child: Container(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Image.network(selectedMeal.strMealThumb ?? "", width: 100, height: 100,),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Text(
-                      selectedMeal.strMeal ?? "",
-                      style:
-                      TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Icon(Icons.timer),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        // Text(selectedMeal.duration.toString() + " minutes"),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      children: <Widget>[
-                        Icon(Icons.monetization_on),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        // Text(selectedMeal.affordability.toString()),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Divider(),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      "Ingredients",
-                      style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    /* Wrap(
-                      spacing: 10.0,
-                      children: <Widget>[
-                        ...selectedMeal.ingredients.map((item) => Chip(
-                          backgroundColor: Colors.amber,
-                          label: Text(item),
-                        )),
-                      ],
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Divider(),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    Text(
-                      "Steps",
-                      style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    ...selectedMeal.steps
-                        .map(
-                          (item) => Column(
-                        children: <Widget>[
-                          ListTile(
-                            leading: Icon(Icons.check),
-                            title: Text(item),
-                          ),
-                          Divider(),
-                        ],
-                      ),
-                    )
-                        .toList(),*/
-                  ],
+      body: Column(children: [
+        Expanded(
+            flex: 1,
+            child: ListView.builder(
+              itemCount: selectedMeal.length,
+              itemBuilder: (context, index) {
+                final item = selectedMeal[index];
+                return MeatItem(item, context);
+              },
+            ))
+      ]));
+
+  Widget MeatItem(Meals meals, BuildContext context) {
+    return GestureDetector(
+        onTap: () => {
+        },
+        child: Card(
+            child: Row(
+              children: [
+                Image.network(
+                  meals.strMealThumb ?? "",
+                  width: 100,
+                  height: 100,
                 ),
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
+                const SizedBox(width: 20),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    FittedBox(
+                      child: Text(meals.strMeal ?? "",
+                          textAlign: TextAlign.start,
+                          style:
+                          const TextStyle(color: Colors.black54, fontSize: 20)),
+                    ),
+                    const SizedBox(height: 15),
+                    Text(meals.strCategory ?? "",
+                        textAlign: TextAlign.start,
+                        style: const TextStyle(color: Colors.green, fontSize: 15))
+                  ],
+                )
+              ],
+            )));
   }}
 

@@ -52,7 +52,7 @@ class _ApiFoodState extends State<ApiFood> {
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>
-                        AllRecipesByCategories(mealCategory : listCategories[index].strCategory)));
+                        AllRecipesByCategories(strCategory : listCategories[index].strCategory)));
               },
             );
           },

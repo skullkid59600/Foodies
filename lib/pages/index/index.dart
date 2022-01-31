@@ -16,7 +16,6 @@ class _Index extends State<Index> {
   List<Meals> listFood = [];
   String _response = 'Bienvenue sur Foodies !';
 
-
   @override
   Widget build(BuildContext context) => Scaffold(
       body: Form(
@@ -26,6 +25,7 @@ class _Index extends State<Index> {
         ]),
       ),
       appBar: AppBar(actions: <Widget>[
+        Image.asset('assets/images/foodies.png'),
         IconButton(
           icon: const Icon(Icons.home),
           tooltip: 'home',
@@ -37,16 +37,18 @@ class _Index extends State<Index> {
           },
         ),
         TextButton(
-            style: TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary),
+            style: TextButton.styleFrom(
+                primary: Theme.of(context).colorScheme.onPrimary),
             child: const Text('Les catégories'),
             onPressed: () {
               setState(() {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => ApiFood()));
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => ApiFood()));
               });
             }),
         TextButton(
-            style: TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary),
+            style: TextButton.styleFrom(
+                primary: Theme.of(context).colorScheme.onPrimary),
             child: const Text('Régions'),
             onPressed: () {
               setState(() {
@@ -55,7 +57,8 @@ class _Index extends State<Index> {
               });
             }),
         TextButton(
-            style: TextButton.styleFrom(primary: Theme.of(context).colorScheme.onPrimary),
+            style: TextButton.styleFrom(
+                primary: Theme.of(context).colorScheme.onPrimary),
             child: const Text('Plat Aléatoire'),
             onPressed: () {
               setState(() {

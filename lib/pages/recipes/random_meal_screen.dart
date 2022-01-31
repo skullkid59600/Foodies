@@ -87,6 +87,7 @@ class _RandomMealScreenState extends State<RandomMealScreen> {
             }),
       ]),
       body: Column(children: [
+        const SizedBox(height: 15),
         ElevatedButton(
             onPressed: () async {
               setState(() {
@@ -94,6 +95,7 @@ class _RandomMealScreenState extends State<RandomMealScreen> {
               });
             },
             child: const Text('Trouver une recette')),
+        const SizedBox(height: 15),
         Expanded(
             flex: 1,
             child: ListView.builder(

@@ -89,6 +89,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => AuthentificationScreen()));
             });
           }, child: Text('Créer le compte')),
+          const SizedBox(height: 15),
           ElevatedButton(onPressed: () async {
             setState(() {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => AuthentificationScreen()));

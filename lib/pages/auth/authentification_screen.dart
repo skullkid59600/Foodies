@@ -18,43 +18,89 @@ class _AuthentificationScreenState extends State<AuthentificationScreen> {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(
-      title: Text("Connexion"),
-    ),
-    body: Form(
-      key: _key,
-      child: Column(
-        children: [
-          TextFormField(
-            controller: _emailController,
-            validator: (value) {
-              if(value != null && value.isEmpty) {
-                return "ERREUR";
-              }
-              return null;
-            },
+        appBar: AppBar(
+          title: Text("Connexion"),
+        ),
+        body: Form(
+          key: _key,
+          child: Column(
+            children: [
+              const SizedBox(height: 15),
+              Container(
+                  margin: const EdgeInsets.only(left: 15, right: 15),
+                  child: TextFormField(
+                    controller: _emailController,
+                    autofocus: false,
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Email',
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding: const EdgeInsets.only(
+                            left: 14.0, bottom: 6.0, top: 8.0),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blueAccent),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue),
+                          borderRadius: BorderRadius.circular(10.0),
+                        )),
+                    validator: (value) {
+                      if (value != null && value.isEmpty) {
+                        return "ERREUR";
+                      }
+                      return null;
+                    },
+                  )),
+              const SizedBox(height: 15),
+              Container(
+                  margin: const EdgeInsets.only(left: 15, right: 15),
+                  child: TextFormField(
+                    controller: _passwordController,
+                    obscureText: true,
+                    autofocus: false,
+                    decoration: InputDecoration(
+                        border: InputBorder.none,
+                        hintText: 'Mot de passe',
+                        filled: true,
+                        fillColor: Colors.white,
+                        contentPadding: const EdgeInsets.only(
+                            left: 14.0, bottom: 6.0, top: 8.0),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blueAccent),
+                          borderRadius: BorderRadius.circular(10.0),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.blue),
+                          borderRadius: BorderRadius.circular(10.0),
+                        )),
+                  )),
+              const SizedBox(height: 15),
+              ElevatedButton(
+                  onPressed: () async {
+                    var test = await FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: _emailController.text,
+                            password: _passwordController.text);
+                    setState(() {
+                      print(test.user?.email);
+                      Navigator.of(context).push(
+                          MaterialPageRoute(builder: (context) => Index()));
+                    });
+                  },
+                  child: Text('Connexion')),
+              const SizedBox(height: 15),
+              ElevatedButton(
+                  onPressed: () async {
+                    setState(() {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => CreateAccountScreen()));
+                    });
+                  },
+                  child: Text('Création  de  compte'))
+            ],
           ),
-          TextFormField(
-            controller: _passwordController,
-            obscureText: true,
-          ),
-          ElevatedButton(onPressed: () async {
-            var test = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                email: _emailController.text,
-                password: _passwordController.text
-            );
-            setState(() {
-              print(test.user?.email);
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => Index()));
-            });
-          }, child: Text('Connexion')),
-          ElevatedButton(onPressed: () async {
-            setState(() {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) => CreateAccountScreen()));
-            });
-          }, child: Text('Création  de  compte'))
-        ],
-      ),
-    ),
-  );
+        ),
+      );
 }

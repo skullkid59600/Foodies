@@ -2,6 +2,7 @@
 
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foodies/data/models/food_byname.dart';
@@ -59,7 +60,31 @@ class _AllRecipesByCategoriesState extends State<AllRecipesByCategories> {
           itemCount: listMeals.length,
           itemBuilder: (context, index) {
             return ListTile(
-              title: Text(listMeals[index].strMeal ?? "vide"),
+              title: Row(
+            children: [
+              Container(
+                margin: EdgeInsets.all(20),
+                width: 70,
+                height: 70,
+                decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                  image: DecorationImage(
+                    image: NetworkImage(listMeals[index].strMealThumb ?? ""),
+                    fit: BoxFit.fill
+                ),
+              ),
+              ),
+            SizedBox(width: 20,),
+            Flexible(
+              flex: 2,
+              child: Column(
+                children: [
+                  Text(listMeals[index].strMeal ?? "vide", style: TextStyle(fontWeight: FontWeight.bold, fontStyle: FontStyle.italic),),
+                ],
+              ),
+            )
+            ],
+              ),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
                     builder: (context) =>

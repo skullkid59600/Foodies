@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:foodies/data/models/food_byname.dart';
 import 'package:foodies/pages/recipes/categories_screen.dart';
@@ -25,7 +26,9 @@ class _Index extends State<Index> {
           Image.network('https://www.themealdb.com/images/meal-icon.png'),
         ]),
       ),
-      appBar: AppBar(actions: <Widget>[
+      appBar: AppBar(
+          backgroundColor: CupertinoColors.systemYellow,
+          actions: <Widget>[
         IconButton(
           icon: const Icon(Icons.home),
           tooltip: 'home',

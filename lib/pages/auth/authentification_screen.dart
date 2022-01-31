@@ -41,11 +41,11 @@ class _AuthentificationScreenState extends State<AuthentificationScreen> {
                         contentPadding: const EdgeInsets.only(
                             left: 14.0, bottom: 6.0, top: 8.0),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blueAccent),
+                          borderSide: BorderSide(color: Colors.deepOrangeAccent),
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue),
+                          borderSide: BorderSide(color: Colors.deepOrangeAccent),
                           borderRadius: BorderRadius.circular(10.0),
                         )),
                     validator: (value) {
@@ -70,11 +70,11 @@ class _AuthentificationScreenState extends State<AuthentificationScreen> {
                         contentPadding: const EdgeInsets.only(
                             left: 14.0, bottom: 6.0, top: 8.0),
                         focusedBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blueAccent),
+                          borderSide: BorderSide(color: Colors.deepOrangeAccent),
                           borderRadius: BorderRadius.circular(10.0),
                         ),
                         enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(color: Colors.blue),
+                          borderSide: BorderSide(color: Colors.deepOrangeAccent),
                           borderRadius: BorderRadius.circular(10.0),
                         )),
                   )),

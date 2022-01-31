@@ -6,7 +6,7 @@ import 'package:foodies/data/models/food_categories.dart';
 import 'package:foodies/data/providers/remote/all_categories_response.dart';
 import 'package:foodies/pages/recipes/AllRecipesByCategories_screen.dart';
 import 'package:foodies/pages/recipes/area_screen.dart';
-import 'package:foodies/pages/recipes/index.dart';
+import 'package:foodies/pages/index/index.dart';
 import 'package:foodies/pages/recipes/random_meal_screen.dart';
 import 'package:http/http.dart' as http;
 

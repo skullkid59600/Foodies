@@ -41,11 +41,11 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                 contentPadding: const EdgeInsets.only(
                     left: 14.0, bottom: 6.0, top: 8.0),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blueAccent),
+                  borderSide: BorderSide(color: Colors.deepOrangeAccent),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blue),
+                  borderSide: BorderSide(color: Colors.deepOrangeAccent),
                   borderRadius: BorderRadius.circular(10.0),
                 )),
             validator: (value) {
@@ -70,16 +70,18 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
                 contentPadding: const EdgeInsets.only(
                     left: 14.0, bottom: 6.0, top: 8.0),
                 focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blueAccent),
+                  borderSide: BorderSide(color: Colors.deepOrangeAccent),
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Colors.blue),
+                  borderSide: BorderSide(color: Colors.deepOrangeAccent),
                   borderRadius: BorderRadius.circular(10.0),
                 )),
           )),
           const SizedBox(height: 15),
-          ElevatedButton(onPressed: () async {
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(primary: Colors.grey),
+              onPressed: () async {
             var test = await FirebaseAuth.instance.createUserWithEmailAndPassword(
                 email: _emailController.text,
                 password: _passwordController.text
@@ -90,7 +92,9 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
             });
           }, child: Text('Créer le compte')),
           const SizedBox(height: 15),
-          ElevatedButton(onPressed: () async {
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(primary: Colors.grey),
+              onPressed: () async {
             setState(() {
               Navigator.of(context).push(MaterialPageRoute(builder: (context) => AuthentificationScreen()));
             });

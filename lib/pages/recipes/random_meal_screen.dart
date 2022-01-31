@@ -89,6 +89,7 @@ class _RandomMealScreenState extends State<RandomMealScreen> {
       body: Column(children: [
         const SizedBox(height: 15),
         ElevatedButton(
+            style: ElevatedButton.styleFrom(primary: Colors.grey),
             onPressed: () async {
               setState(() {
                 getRandomRecipe();

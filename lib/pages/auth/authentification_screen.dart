@@ -80,6 +80,7 @@ class _AuthentificationScreenState extends State<AuthentificationScreen> {
                   )),
               const SizedBox(height: 15),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.grey),
                   onPressed: () async {
                     var test = await FirebaseAuth.instance
                         .signInWithEmailAndPassword(
@@ -94,6 +95,7 @@ class _AuthentificationScreenState extends State<AuthentificationScreen> {
                   child: Text('Connexion')),
               const SizedBox(height: 15),
               ElevatedButton(
+                  style: ElevatedButton.styleFrom(primary: Colors.grey),
                   onPressed: () async {
                     setState(() {
                       Navigator.of(context).push(MaterialPageRoute(

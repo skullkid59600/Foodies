@@ -2,8 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:foodies/pages/auth/create_account_screen.dart';
-import 'package:foodies/pages/recipes/categories_screen.dart';
-import 'package:foodies/pages/recipes/index.dart';
+import 'package:foodies/pages/index/index.dart';
 
 class AuthentificationScreen extends StatefulWidget {
   const AuthentificationScreen({Key? key}) : super(key: key);

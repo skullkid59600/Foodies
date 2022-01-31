@@ -1,5 +1,3 @@
-// fichier comprenant les recettes d'une catégorie de bouffe
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

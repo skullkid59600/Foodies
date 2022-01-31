@@ -3,7 +3,7 @@ import 'package:foodies/data/models/food_byname.dart';
 import 'package:foodies/pages/recipes/categories_screen.dart';
 import 'package:foodies/pages/recipes/random_meal_screen.dart';
 
-import 'area_screen.dart';
+import '../recipes/area_screen.dart';
 
 class Index extends StatefulWidget {
   const Index({Key? key}) : super(key: key);

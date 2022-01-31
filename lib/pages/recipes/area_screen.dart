@@ -9,7 +9,7 @@ import 'package:foodies/pages/recipes/categories_screen.dart';
 import 'package:foodies/pages/recipes/random_meal_screen.dart';
 import 'package:http/http.dart' as http;
 
-import 'index.dart';
+import '../index/index.dart';
 
 class MealByAreaScreen extends StatefulWidget {
   const MealByAreaScreen({Key? key}) : super(key: key);

@@ -1,14 +1,11 @@
 import 'dart:convert';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:foodies/data/models/food_byname.dart';
-
 import 'AllRecipesByCategories_screen.dart';
 import 'area_screen.dart';
 import 'categories_screen.dart';
-import 'index.dart';
+import '../index/index.dart';
 
 class RandomMealScreen extends StatefulWidget {
   const RandomMealScreen({Key? key}) : super(key: key);

@@ -21,6 +21,7 @@ class _AuthentificationScreenState extends State<AuthentificationScreen> {
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
           title: Text("Connexion"),
+          centerTitle: true,
           backgroundColor: CupertinoColors.systemYellow,
         ),
         body: Form(

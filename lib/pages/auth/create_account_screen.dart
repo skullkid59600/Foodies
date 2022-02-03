@@ -20,6 +20,7 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> {
   Widget build(BuildContext context) => Scaffold(
     appBar: AppBar(
       backgroundColor: CupertinoColors.systemYellow,
+      centerTitle: true,
       title: Text("Création de compte"),
     ),
     body: Form(

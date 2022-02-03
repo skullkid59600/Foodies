@@ -21,7 +21,6 @@ class MealByName extends StatefulWidget {
   _MealByNameState createState() => _MealByNameState();
 }
 
-
 class _MealByNameState extends State<MealByName> {
 
   List<Meals> selectedMeal = [];
@@ -32,7 +31,6 @@ class _MealByNameState extends State<MealByName> {
   }
 
   String _response = 'test';
-
 
   Future<void> getRecipeByName() async {
     var uri = Uri.parse("https://www.themealdb.com/api/json/v1/1/search.php?s=${widget.strMeal}");
@@ -138,25 +136,25 @@ class _MealByNameState extends State<MealByName> {
                         Text(meals.strMeal ?? "",
                           textAlign: TextAlign.center,
                           style:
-                          const TextStyle(color: Colors.brown, fontSize: 20, fontWeight: FontWeight.bold)
+                          const TextStyle(color: Colors.brown, fontSize: 22, fontWeight: FontWeight.bold)
                         ),
                         const SizedBox(height: 8,),
                         const Text("Catégorie : ",
                             textAlign: TextAlign.center,
                             style:
-                            TextStyle(color: Colors.amber, fontSize: 20, fontWeight: FontWeight.bold)
+                            TextStyle(color: Colors.amber, fontSize: 18, fontWeight: FontWeight.bold)
                         ),
                         const SizedBox(height: 8,),
                         Text(meals.strCategory?? "",
                             textAlign: TextAlign.center,
                             style:
-                            const TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.bold)
+                            const TextStyle(color: Colors.black54, fontSize: 14, fontWeight: FontWeight.bold)
                         ),
                         const SizedBox(height: 8,),
                         const Text("Région : ",
                             textAlign: TextAlign.center,
                             style:
-                            TextStyle(color: Colors.amber, fontSize: 20, fontWeight: FontWeight.bold)
+                            TextStyle(color: Colors.amber, fontSize: 18, fontWeight: FontWeight.bold)
                         ),
                         const SizedBox(height: 8,),
                         Text(meals.strArea?? "",
@@ -168,13 +166,13 @@ class _MealByNameState extends State<MealByName> {
                         const Text("Instructions : ",
                             textAlign: TextAlign.center,
                             style:
-                            TextStyle(color: Colors.amber, fontSize: 20, fontWeight: FontWeight.bold)
+                            TextStyle(color: Colors.amber, fontSize: 18, fontWeight: FontWeight.bold)
                         ),
                         const SizedBox(height: 8,),
                         Text(meals.strInstructions?? "",
-                            textAlign: TextAlign.center,
+                            textAlign: TextAlign.justify,
                             style:
-                            const TextStyle(color: Colors.black54, fontSize: 15, fontWeight: FontWeight.bold)
+                            const TextStyle(color: Colors.black54, fontSize: 15)
                         ),
                   ]
                 ),

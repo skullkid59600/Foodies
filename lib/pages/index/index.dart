@@ -15,7 +15,8 @@ class Index extends StatefulWidget {
 
 class _Index extends State<Index> {
   List<Meals> listFood = [];
-  String _response = 'Bienvenue sur Foodies !';
+  String _response = 'Bienvenue sur Foodies';
+  String _textindex = 'Une application pour les gourmands!';
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -24,9 +25,13 @@ class _Index extends State<Index> {
           Text(_response,
               textAlign: TextAlign.center,
               style:
-              const TextStyle(color: Colors.brown, fontSize: 40, fontWeight: FontWeight.bold)),
+              const TextStyle(color: Colors.brown, fontSize: 30, fontWeight: FontWeight.bold)),
+          Text(_textindex,
+              textAlign: TextAlign.center,
+              style:
+              const TextStyle(color: Colors.brown, fontSize:16)),
           Image.network('https://www.themealdb.com/images/meal-icon.png',
-            height: 200,
+            height: 300,
             width: double.infinity,
             fit: BoxFit.cover,),
         ]),
@@ -35,7 +40,7 @@ class _Index extends State<Index> {
         automaticallyImplyLeading: false,
           backgroundColor: CupertinoColors.systemYellow,
           actions: <Widget>[
-        Image.asset('assets/images/foodies.png'),
+        Image.asset('assets/images/foodies.png', width: 70),
         IconButton(
           icon: const Icon(Icons.home),
           tooltip: 'home',

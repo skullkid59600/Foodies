@@ -15,8 +15,8 @@ class Index extends StatefulWidget {
 
 class _Index extends State<Index> {
   List<Meals> listFood = [];
-  String _response = 'Bienvenue sur Foodies';
-  String _textindex = 'Une application pour les gourmands!';
+  final String _response = 'Bienvenue sur Foodies';
+  final String _textindex = 'Une application pour les gourmands!';
 
   @override
   Widget build(BuildContext context) => Scaffold(

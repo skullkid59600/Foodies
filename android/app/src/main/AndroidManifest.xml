@@ -2,6 +2,7 @@
     package="com.example.foodies">
     <application
         android:label="foodies"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher">
         <activity
             android:name=".MainActivity"

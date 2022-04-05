@@ -55,8 +55,7 @@ class _Index extends State<Index> {
                 children: [
                   Image.asset('assets/images/foodies.png', width: 70),
                   IconButton(
-                    icon: const Icon(Icons.logout),
-                    tooltip: 'home',
+                    icon: const Icon(Icons.logout,color: Colors.white,),
                     onPressed: () {
                       BlocProvider.of<AuthenticationBloc>(context).add(
                         LoggedOut(),
@@ -65,8 +64,8 @@ class _Index extends State<Index> {
                   ),
                 ],
               ),
-              decoration: BoxDecoration(
-                color: Colors.blue,
+              decoration: const BoxDecoration(
+                color:CupertinoColors.systemYellow,
               ),
             ),
             ListTile(

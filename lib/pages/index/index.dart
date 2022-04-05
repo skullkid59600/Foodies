@@ -55,10 +55,12 @@ class _Index extends State<Index> {
                 children: [
                   Image.asset('assets/images/foodies.png', width: 70),
                   IconButton(
-                    icon: const Icon(Icons.home),
+                    icon: const Icon(Icons.logout),
                     tooltip: 'home',
                     onPressed: () {
-
+                      BlocProvider.of<AuthenticationBloc>(context).add(
+                        LoggedOut(),
+                      );
                     },
                   ),
                 ],

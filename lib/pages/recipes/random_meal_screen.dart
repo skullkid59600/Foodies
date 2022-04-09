@@ -128,11 +128,12 @@ class _RandomMealScreenState extends State<RandomMealScreen> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 FittedBox(
-                  child: Text(meals.strMeal ?? "",
+                  child: Container(
+                    child: Text(meals.strMeal ?? "",
                       textAlign: TextAlign.start,
                       style:
-                          const TextStyle(color: Colors.black54, fontSize: 20)),
-                ),
+                      const TextStyle(color: Colors.black54, fontSize: 15)),
+                  )),
                 const SizedBox(height: 15),
                 Text(meals.strCategory ?? "",
                     textAlign: TextAlign.start,

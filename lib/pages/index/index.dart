@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:foodies/bloc/authentication_bloc/authentication_bloc.dart';
 import 'package:foodies/bloc/authentication_bloc/authentication_event.dart';
 import 'package:foodies/data/models/food_byname.dart';
+import 'package:foodies/pages/photos/galery.dart';
 import 'package:foodies/pages/recipes/categories_screen.dart';
 import 'package:foodies/pages/recipes/random_meal_screen.dart';
 
@@ -74,6 +75,15 @@ class _Index extends State<Index> {
                 setState(() {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) => ApiFood()));
+                });
+              },
+            ),
+            ListTile(
+              title: Text('Mes recettes'),
+              onTap: () {
+                setState(() {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => Galery()));
                 });
               },
             ),
